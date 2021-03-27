@@ -74,7 +74,7 @@ figure
 scatter3(x,y,z,...
         'MarkerEdgeColor','k',...
         'MarkerFaceColor',[0 .75 .75])
-view(-30,10)
+axis vis3d
 
 %% Matrices a archivos y viceversa
 datos = iris_dataset;
