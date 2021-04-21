@@ -1,7 +1,12 @@
 %               Abraham Rodriguez Vázquez
+% Codigo para realizar regresion logistica al conjunto de
+% datos Iris incorporado en MATLAB
+% Abril/2021
 
+% Limpieza inicial
 clear;clc;close all;
 
+% Preprocesado
 dataset = iris_dataset';
 dataset = dataset(1:100,:);
 clases = vertcat(zeros(50,1),ones(50,1));
@@ -25,17 +30,15 @@ for i = 2:3
 end
 
 
-% Inicializacion de variables
+% Inicializacion de variables e hiperparametros
 alfa = .07;
 thetas = zeros(3,1);
 temp = ones(3,1);
 iteraciones = 1000;
 J = zeros(1,iteraciones);
 
-equis1 = linspace(-20,20);
-equis2 = linspace(-20,20);
-
-[X,Y] = meshgrid(equis1,equis2);
+% Matrices para graficado con contour
+[X,Y] = meshgrid(linspace(-20,20),linspace(-20,20));
 
 figure;
 title('Divisor entre I. Setosa y I. Versicolor');
@@ -75,6 +78,7 @@ plot(1:iteraciones,J)
 title('Costo-Iteraciones')
 
 
+% Funcion auxiliar sigmoide
 function valorsigmoide = h(x, thetas)
 valorsigmoide = (1./(1 + exp(-(thetas'*x'))))';
 
