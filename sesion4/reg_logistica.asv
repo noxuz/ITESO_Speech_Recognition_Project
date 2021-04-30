@@ -41,7 +41,7 @@ iteraciones = 1000;         % Numero de iteraciones
 J = zeros(1,iteraciones);   % Vector para almacenar el costo
 
 % Matrices para graficado con contour
-[X,Y] = meshgrid(linspace(-2,2),linspace(-2,2));
+[X,Y] = meshgrid(linspace(-20,20),linspace(-20,20));
 
 % Iniciar ventana de graficado
 figure;
@@ -58,7 +58,7 @@ for k = 1:iteraciones
 
     % Graficar
     scatter(x(1:50,2),x(1:50,3),'x','r')
-    hold on;
+    hold on
     scatter(x(51:100,2),x(51:100,3),'o','b')
      
     contour(X,Y,(1./(1 + exp(-(thetas(1) + thetas(2)*X + thetas(3)*Y))))');
@@ -85,7 +85,7 @@ figure;
 scatter3(x(:,2),x(:,3),h(x,thetas))
 axis vis3d
 hold on
-surf(X,Y,-(thetas(1) + thetas(2)*X + thetas(3)*Y))
+scatter3(X,Y,thetas(1) + thetas(2)*X + thetas(3)*Y)
 
 % Funcion auxiliar sigmoide
 function valorsigmoide = h(x, thetas)
